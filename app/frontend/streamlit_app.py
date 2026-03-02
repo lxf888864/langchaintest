@@ -23,7 +23,11 @@ with chat_box:
             st.markdown(f"**助手：** {content}")
 
 st.subheader("输入与操作")
-stock_name = st.text_input("股票名称", value="请输入股票名称，我可以为您生成评论")
+stock_name = st.text_input(
+    "股票名称",
+    value="",
+    placeholder="请输入股票名称，我可以为您生成评论",
+)
 uploaded_file = st.file_uploader("上传资料文件（txt/md/pdf/docx）", type=["txt", "md", "pdf", "docx", "doc"])
 
 col1, col2 = st.columns(2)
@@ -42,6 +46,9 @@ with col1:
 
 with col2:
     if st.button("提交", use_container_width=True, type="primary"):
+        if not stock_name.strip():
+            st.warning("请输入股票名称后再提交")
+            st.stop()
         st.session_state.messages.append(("user", stock_name))
         resp = requests.post(f"{API_BASE}/chat", json={"stock_name": stock_name}, timeout=180)
         if resp.ok:

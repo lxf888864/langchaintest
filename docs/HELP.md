@@ -93,3 +93,26 @@ run_frontend.bat
 ## 8. 注意事项
 - 本项目输出仅供学习和演示，不构成投资建议。
 - 股票数据依赖公网接口，网络不可用时会失败。
+
+
+## 9. 在 PyCharm 中启动后端并 Debug（Windows）
+1. 用 PyCharm 打开项目根目录 `langchaintest`。
+2. 先在 PyCharm 终端创建并选择解释器：
+   - `python -m venv .venv`
+   - Windows 解释器路径建议选择：`.venv\Scripts\python.exe`
+   - 安装依赖：`pip install -r requirements.txt`
+3. 在 PyCharm 顶部点击 **Run | Edit Configurations...**，新增 **Python** 配置：
+   - **Name**: `Backend FastAPI (uvicorn)`
+   - **Module name**: `uvicorn`
+   - **Parameters**: `app.backend.api:app --host 127.0.0.1 --port 8001 --reload`
+   - **Working directory**: 项目根目录（`...\langchaintest`）
+   - **Python interpreter**: `.venv\Scripts\python.exe`
+4. 点击 Run/Debug 启动该配置，看到 `Uvicorn running on http://127.0.0.1:8001` 即成功。
+5. 在 `app/backend/api.py` 或 `app/backend/agent_service.py` 打断点，使用 Debug 启动后，即可在接口请求时命中断点。
+6. 可选：在 PyCharm 再加一个 **Streamlit 前端** 配置（普通 Run 即可）：
+   - **Module name**: `streamlit`
+   - **Parameters**: `run app/frontend/streamlit_app.py --server.port 8501`
+   - 启动后访问 `http://localhost:8501`。
+
+> 提示：如果后端 Debug 时希望同时启动 MCP 工具，无需手动额外运行工具进程，后端会按 `app/config/settings.yaml` 的 `mcp.server_command/server_args` 自动拉起。
+

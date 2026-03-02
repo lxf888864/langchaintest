@@ -25,3 +25,7 @@ docs/
 1. 启动后端：`run_backend.bat`（CMD）或 `./run_backend.ps1`（PowerShell）
 2. 启动前端：`run_frontend.bat`（CMD）或 `./run_frontend.ps1`（PowerShell）
 3. 打开浏览器访问：`http://localhost:8501`
+
+## PyCharm 调试后端（Windows）
+详见 `docs/HELP.md` 的“在 PyCharm 中启动后端并 Debug（Windows）”章节。
+
