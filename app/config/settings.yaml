@@ -1,0 +1,19 @@
+ollama:
+  base_url: "http://localhost:11434"
+  model: "qwen2.5:7b"
+  embedding_model: "nomic-embed-text"
+
+storage:
+  upload_dir: "data/uploads"
+  chroma_dir: "data/chroma_db"
+  collection_name: "stock_docs"
+
+mcp:
+  server_command: "python"
+  server_args:
+    - "app/tools/stock_price_tool_mcp.py"
+
+retrieval:
+  chunk_size: 800
+  chunk_overlap: 120
+  top_k: 4

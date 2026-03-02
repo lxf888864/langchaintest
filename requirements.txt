@@ -1,0 +1,14 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+streamlit==1.39.0
+requests==2.32.3
+pydantic==2.9.2
+python-multipart==0.0.12
+pyyaml==6.0.2
+langchain==0.3.4
+langchain-community==0.3.3
+langchain-ollama==0.2.0
+langchain-text-splitters==0.3.0
+langchain-chroma==0.1.4
+chromadb==0.5.11
+mcp==1.0.0
