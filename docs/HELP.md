@@ -27,6 +27,9 @@ pip install -U pip
 pip install -r requirements.txt
 ```
 
+> Windows 首次执行 PowerShell 脚本若被策略拦截，可在 PowerShell（管理员）中执行：
+> `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
+
 ## 4. 修改本地配置
 配置文件：`app/config/settings.yaml`
 关键项：
@@ -38,14 +41,32 @@ pip install -r requirements.txt
 ## 5. 启动服务
 
 ### 5.1 启动后端 API
+- macOS/Linux:
 ```bash
 ./run_backend.sh
+```
+- Windows (CMD):
+```bat
+run_backend.bat
+```
+- Windows (PowerShell):
+```powershell
+./run_backend.ps1
 ```
 
 ### 5.2 启动前端 Web
 新开一个终端：
+- macOS/Linux:
 ```bash
 ./run_frontend.sh
+```
+- Windows (CMD):
+```bat
+run_frontend.bat
+```
+- Windows (PowerShell):
+```powershell
+./run_frontend.ps1
 ```
 
 浏览器打开：`http://localhost:8501`
