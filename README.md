@@ -29,3 +29,9 @@ docs/
 ## PyCharm 调试后端（Windows）
 详见 `docs/HELP.md` 的“在 PyCharm 中启动后端并 Debug（Windows）”章节。
 
+## PyCharm 运行配置模板
+项目已内置 `.run/` 目录配置，可直接在 PyCharm 中选择：
+- `Backend FastAPI (uvicorn)`
+- `Frontend Streamlit`
+
+如解释器路径不一致，请在 PyCharm 中改为本机 `.venv` 的实际路径。

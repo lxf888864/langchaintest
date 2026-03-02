@@ -116,3 +116,15 @@ run_frontend.bat
 
 > 提示：如果后端 Debug 时希望同时启动 MCP 工具，无需手动额外运行工具进程，后端会按 `app/config/settings.yaml` 的 `mcp.server_command/server_args` 自动拉起。
 
+### 9.1 一键复用模板（推荐）
+仓库已提供可共享的 PyCharm Run/Debug 模板：
+- `.run/Backend FastAPI (uvicorn).run.xml`
+- `.run/Frontend Streamlit.run.xml`
+
+使用方法：
+1. 用 PyCharm 打开项目后，确认解释器为 `.venv\Scripts\python.exe`。
+2. 在右上角运行配置下拉框中，选择 `Backend FastAPI (uvicorn)` 或 `Frontend Streamlit`。
+3. 直接点击 Run 或 Debug 即可。
+
+> 若你的虚拟环境路径不同，可在 Run Configuration 中把 Python Interpreter 改成你的实际路径。
+
