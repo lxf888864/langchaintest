@@ -2,7 +2,7 @@
 
 ## 1. 前置软件
 1. Python 3.10+
-2. Ollama（本地大模型服务）
+2. Ollama（本地大模型服务）或 OpenAI API（可选）
 3. （可选）Git
 
 ## 2. 安装 Ollama 与模型
@@ -16,6 +16,21 @@
 ollama pull qwen2.5:7b
 ollama pull nomic-embed-text
 ollama serve
+```
+
+
+### 2.3 使用 OpenAI（可选）
+如果你不想使用 Ollama，可切换到 OpenAI：
+1. 准备 API Key（设置环境变量 `OPENAI_API_KEY`，或写入 `settings.yaml`）
+2. 在 `app/config/settings.yaml` 中修改：
+```yaml
+llm_provider: "openai"
+embedding_provider: "openai"
+openai:
+  api_key: "你的key"   # 建议留空并使用环境变量
+  base_url: "https://api.openai.com/v1"
+  model: "gpt-4o-mini"
+  embedding_model: "text-embedding-3-small"
 ```
 
 ## 3. 安装 Python 依赖
@@ -33,9 +48,10 @@ pip install -r requirements.txt
 ## 4. 修改本地配置
 配置文件：`app/config/settings.yaml`
 关键项：
-- `ollama.base_url`: Ollama 服务地址（默认 `http://localhost:11434`）
-- `ollama.model`: 对话模型名称
-- `ollama.embedding_model`: 向量模型名称
+- `llm_provider`: 对话模型提供商（`ollama` / `openai`）
+- `embedding_provider`: 向量模型提供商（`ollama` / `openai`）
+- `ollama.*`: Ollama 相关配置
+- `openai.*`: OpenAI 相关配置（`api_key` 建议用环境变量）
 - `mcp.server_command/server_args`: MCP 工具启动命令
 
 ## 5. 启动服务
@@ -89,6 +105,9 @@ run_frontend.bat
 3. **PDF/DOCX 解析失败**
    - 先尝试 txt/md 文件
    - 确保依赖已完整安装
+4. **OpenAI 调用报认证错误**
+   - 检查 `OPENAI_API_KEY` 是否生效
+   - 或检查 `settings.yaml` 中 `openai.api_key`、`openai.base_url` 配置
 
 ## 8. 注意事项
 - 本项目输出仅供学习和演示，不构成投资建议。

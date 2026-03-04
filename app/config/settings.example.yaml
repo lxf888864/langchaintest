@@ -1,7 +1,16 @@
+llm_provider: "ollama"
+embedding_provider: "ollama"
+
 ollama:
   base_url: "http://localhost:11434"
   model: "qwen2.5:7b"
   embedding_model: "nomic-embed-text"
+
+openai:
+  api_key: ""
+  base_url: "https://api.openai.com/v1"
+  model: "gpt-4o-mini"
+  embedding_model: "text-embedding-3-small"
 
 storage:
   upload_dir: "data/uploads"

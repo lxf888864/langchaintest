@@ -13,6 +13,13 @@ class OllamaConfig(BaseModel):
     embedding_model: str
 
 
+class OpenAIConfig(BaseModel):
+    api_key: str = ""
+    base_url: str = "https://api.openai.com/v1"
+    model: str = "gpt-4o-mini"
+    embedding_model: str = "text-embedding-3-small"
+
+
 class StorageConfig(BaseModel):
     upload_dir: str
     chroma_dir: str
@@ -31,7 +38,10 @@ class RetrievalConfig(BaseModel):
 
 
 class AppSettings(BaseModel):
+    llm_provider: str = "ollama"
+    embedding_provider: str = "ollama"
     ollama: OllamaConfig
+    openai: OpenAIConfig = OpenAIConfig()
     storage: StorageConfig
     mcp: MCPConfig
     retrieval: RetrievalConfig
